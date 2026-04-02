@@ -11,7 +11,11 @@ for line in lines:
     if line != "":
         clean_lines.append(line)
 
-total_commands=len(clean_lines)                             #countining the commands
+commands=[]
 
-print("Total commands used : ", total_commands)
+for line in clean_lines:
+    first_word=line.split()[0]
+    commands.append(first_word)
+
+print("Total commands used : ", len(commands))
 
