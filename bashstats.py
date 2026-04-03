@@ -1,3 +1,5 @@
+from collections import Counter
+
 history_file= "/home/santhuc9/.bash_history"
 
 with open(history_file, "r") as file:                       #reading the bash history file
@@ -17,13 +19,10 @@ for line in clean_lines:
     first_word=line.split()[0]
     commands.append(first_word)
 
-command_count = {}                                         #counts the commands  #{}-Dictionary-counts the cmds in the list
+command_count = Counter(commands)                                     # counter is easier and simpler 
 
-for command in commands:
-    if command in command_count:
-        command_count[command] += 1
-    else:
-        command_count[command] = 1
+print("Ten most used commands- \n")
 
-print("Total commands used : ", command_count)
+for command, count in command_count.most_common(10):                   #(10) gives the top 10 while ()[10] gives us the 11th unit in the list
+    print(command, ":" ,count)
 
