@@ -32,3 +32,9 @@ if search_command in command_count:
     print(search_command,":",command_count[search_command])
 else:
     print("Command not found")
+
+with open("cmds_report.txt","w") as file:                               #creates (.txt) report file for the top 10 cmds
+    file.write("Top commands\n")
+
+    for command,count in command_count.most_common(10):
+        file.write(f"{command}:{count}\n")
